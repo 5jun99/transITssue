@@ -1,0 +1,21 @@
+spring:
+  config:
+    activate:
+      on-profile: default
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/transit
+    username: root
+    password: 12341234
+  jpa:
+    hibernate:
+      ddl-auto: create
+fetch:
+  api:
+    base-url: http://openapi.seoul.go.kr:8088/57515268566f6a3039396670626461/xml/
+    api-key: 57515268566f6a3039396670626461
+    fetch-interval: 300000
+
+    accident:
+      info-url: AccInfo/1/1000/
+      type-url: AccMainCode/1/100/
