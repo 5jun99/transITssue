@@ -1,5 +1,6 @@
 package com.project.transit.fetch;
 
+import com.project.transit.config.FetchApiProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class TrafficScheduler {
     private final IssueFetchService issueFetchService;
 
-    @Scheduled(fixedRate = 300000)
+    @Scheduled(fixedRateString = "${fetch.api.fetch-interval}")
     public void fetchAccidents() {
         issueFetchService.fetch();
     }
