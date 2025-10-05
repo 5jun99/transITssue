@@ -35,3 +35,13 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Environment Variables ###
+.env
+.env.local
+.env.*.local
+
+
+private.txt
+transit_accessKeys.csv
+task-definition-prod.json

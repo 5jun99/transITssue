@@ -1,21 +1,32 @@
 spring:
-  config:
-    activate:
-      on-profile: default
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
 
   datasource:
-    url: jdbc:mysql://localhost:3306/transit
-    username: root
-    password: 12341234
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
-    hibernate:
-      ddl-auto: create
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
 fetch:
   api:
-    base-url: http://openapi.seoul.go.kr:8088/57515268566f6a3039396670626461/xml/
-    api-key: 57515268566f6a3039396670626461
-    fetch-interval: 300000
+    base-url: ${API_BASE_URL}
+    api-key: ${API_KEY}
+    fetch-interval: ${FETCH_INTERVAL:300000}
 
     accident:
-      info-url: AccInfo/1/1000/
-      type-url: AccMainCode/1/100/
+      info-url: ${API_ACCIDENT_INFO_URL:AccInfo/1/1000/}
+      type-url: ${API_ACCIDENT_TYPE_URL:AccMainCode/1/100/}
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+  level:
+    root: INFO
