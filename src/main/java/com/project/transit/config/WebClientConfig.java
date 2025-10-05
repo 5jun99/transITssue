@@ -8,12 +8,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 @RequiredArgsConstructor
 public class WebClientConfig {
-    private final FetchApiProperties properties;
+    private final FetchApiProperties fetchApiProperties;
 
     @Bean
     public WebClient webClient(WebClient.Builder builder) {
         return builder
-                .baseUrl(properties.getBaseUrl())
+                .baseUrl(fetchApiProperties.getBaseUrl())
                 .defaultHeader("Content-Type", "application/xml")
                 .build();
                 //.defaultHeader("Authorization", "API_KEY")  // 필요하다면 추가
